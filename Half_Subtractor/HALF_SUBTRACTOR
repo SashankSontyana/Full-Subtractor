@@ -1,0 +1,74 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000002309914be10 .scope module, "half_subtractor_tb" "half_subtractor_tb" 2 2;
+ .timescale -9 -12;
+v000002309909fea0_0 .var "t_a", 0 0;
+v000002309909fc20_0 .var "t_b", 0 0;
+v000002309909f4a0_0 .net "t_bor", 0 0, L_0000023099023010;  1 drivers
+v000002309909f540_0 .net "t_dif", 0 0, L_0000023099023860;  1 drivers
+S_000002309914c9b0 .scope module, "gut" "half_subtractor" 2 6, 3 1 0, S_000002309914be10;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "dif";
+    .port_info 3 /OUTPUT 1 "bor";
+L_000002309914bc80 .functor NOT 1, v000002309909fea0_0, C4<0>, C4<0>, C4<0>;
+L_000002309914df70 .functor AND 1, L_000002309914bc80, v000002309909fc20_0, C4<1>, C4<1>;
+L_00000230990235a0 .functor NOT 1, v000002309909fc20_0, C4<0>, C4<0>, C4<0>;
+L_0000023099023700 .functor AND 1, v000002309909fea0_0, L_00000230990235a0, C4<1>, C4<1>;
+L_0000023099023860 .functor OR 1, L_000002309914df70, L_0000023099023700, C4<0>, C4<0>;
+L_0000023099022fa0 .functor NOT 1, v000002309909fea0_0, C4<0>, C4<0>, C4<0>;
+L_0000023099023010 .functor AND 1, L_0000023099022fa0, v000002309909fc20_0, C4<1>, C4<1>;
+v000002309914bfa0_0 .net "A", 0 0, v000002309909fea0_0;  1 drivers
+v000002309914bbe0_0 .net "B", 0 0, v000002309909fc20_0;  1 drivers
+v000002309914cb40_0 .net *"_ivl_0", 0 0, L_000002309914bc80;  1 drivers
+v000002309914cbe0_0 .net *"_ivl_10", 0 0, L_0000023099022fa0;  1 drivers
+v000002309914cc80_0 .net *"_ivl_2", 0 0, L_000002309914df70;  1 drivers
+v0000023099022d20_0 .net *"_ivl_4", 0 0, L_00000230990235a0;  1 drivers
+v0000023099022dc0_0 .net *"_ivl_6", 0 0, L_0000023099023700;  1 drivers
+v0000023099022e60_0 .net "bor", 0 0, L_0000023099023010;  alias, 1 drivers
+v0000023099022f00_0 .net "dif", 0 0, L_0000023099023860;  alias, 1 drivers
+    .scope S_000002309914be10;
+T_0 ;
+    %vpi_call 2 12 "$dumpfile", "half_subtractor.vcd" {0 0 0};
+    %vpi_call 2 13 "$dumpvars", 32'sb00000000000000000000000000000000, S_000002309914be10 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002309909fea0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002309909fc20_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 17 "$display", "%b %b | %b %b", v000002309909fea0_0, v000002309909fc20_0, v000002309909f4a0_0, v000002309909f540_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002309909fea0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002309909fc20_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 21 "$display", "%b %b | %b %b", v000002309909fea0_0, v000002309909fc20_0, v000002309909f4a0_0, v000002309909f540_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002309909fea0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002309909fc20_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 25 "$display", "%b %b | %b %b", v000002309909fea0_0, v000002309909fc20_0, v000002309909f4a0_0, v000002309909f540_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002309909fea0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002309909fc20_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 29 "$display", "%b %b | %b %b", v000002309909fea0_0, v000002309909fc20_0, v000002309909f4a0_0, v000002309909f540_0 {0 0 0};
+    %vpi_call 2 30 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "half_subtractor_tb.v";
+    "half_subtractor.v";
